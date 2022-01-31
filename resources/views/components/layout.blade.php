@@ -21,6 +21,19 @@
         padding-top:5px;
         padding-bottom:5px;
     }
+    .fixbar {
+        background-color: black;
+        color:white;
+        position:fixed;
+        top:10px;
+        right:200px;
+        border: 2px solid blue;
+        border-radius:6px;
+    }
+    .fixbar button {
+        color:blue;
+        background-color:white;
+    }
     input {
         padding: 10px;
     }

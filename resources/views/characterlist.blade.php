@@ -1,26 +1,34 @@
 @extends ('components.layout')
+@php
+  $name = 0;
+@endphp
 @section('content')
     <div class="container">
+        <div class="fixbar">
+            <input type="text" id="search"/>
+            <button class="btn btn-md btn-outline" onclick="search()" id="searchbutton">Go</button>
+        </div>
         @foreach ($results as $r)
-            <div class="row">
+            <div class="row" id="row{{$name}}">
                 <div class="col-md-3 text-center">
-                    <label>{{$r->name}}</label>
+                    <label id="name{{$name}}">{{$r->name}}</label>
                     <img src="{{$r->image}}" style="width:125px;margin-bottom:4px;border-radius:8px">
                 </div>
                 <div class="col-md-1">
-                    <label>Species</label>
+                    <span>Species</span>
                     <p>{{$r->species}}</p>
                 </div>
                 <div class="col-md-3">
-                    <label>Origin</label>
+                    <span>Origin</span>
                     @php
+                        $name++;
                         $a = explode(",", $r->origin);
                         echo "<p>". $a[0] . "</p>";
                         echo "<p>". $a[1] . "</p>";
                     @endphp
                 </div>
                 <div class="col-md-4">
-                    <label>Episodes</label>
+                    <span>Episodes</span>
                     <div style="word-wrap: break-word">
                     @php
                         $a = explode(",", $r->episodes);
@@ -40,3 +48,21 @@
         @endforeach
     </div>
 @endsection
+<script>
+    function search() {
+        let textSearch = document.getElementById("search").value;
+        let aTags = document.getElementsByTagName("label");
+        let found;
+        for (let i = 0; i < aTags.length; i++) {
+            let s = aTags[i].textContent;
+            if (s.includes(textSearch)) {
+                found = aTags[i];
+                console.log("name" + i);
+                document.getElementById("name" + i).scrollIntoView();
+                document.getElementById("row" + i).style.borderColor = "red";
+                document.getElementById("row" + i).style.borderWidth = "thick";
+                break;
+            }
+        }
+    }
+</script>
