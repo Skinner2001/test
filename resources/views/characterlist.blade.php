@@ -12,7 +12,9 @@
             <div class="row" id="row{{$name}}">
                 <div class="col-md-3 text-center">
                     <label id="name{{$name}}">{{$r->name}}</label>
+                    <a href="profile/{{$name}}">
                     <img src="{{$r->image}}" style="width:125px;margin-bottom:4px;border-radius:8px">
+                    </a>
                 </div>
                 <div class="col-md-1">
                     <span>Species</span>
