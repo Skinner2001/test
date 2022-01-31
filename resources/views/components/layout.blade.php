@@ -22,7 +22,6 @@
         padding-bottom:5px;
     }
     .fixbar {
-        background-color: black;
         color:white;
         position:fixed;
         top:10px;
@@ -43,6 +42,9 @@
     }
     p {
         font-size:1rem;
+    }
+    #message {
+        color:black;
     }
     h2 {
         color:  white;

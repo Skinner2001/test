@@ -7,6 +7,7 @@
         <div class="fixbar">
             <input type="text" id="search"/>
             <button class="btn btn-md btn-outline" onclick="search()" id="searchbutton">Go</button>
+            <div id="message" style="display:none">Not found</div>
         </div>
         @foreach ($results as $r)
             <div class="row" id="row{{$name}}">
@@ -52,19 +53,23 @@
 @endsection
 <script>
     function search() {
+
         let textSearch = document.getElementById("search").value;
         let aTags = document.getElementsByTagName("label");
-        let found;
+        let found = false;
         for (let i = 0; i < aTags.length; i++) {
             let s = aTags[i].textContent;
             if (s.includes(textSearch)) {
-                found = aTags[i];
+                found = true;
                 console.log("name" + i);
                 document.getElementById("name" + i).scrollIntoView();
                 document.getElementById("row" + i).style.borderColor = "red";
                 document.getElementById("row" + i).style.borderWidth = "thick";
+                document.getElementById("message").style.display = 'none';
                 break;
             }
+            if (!found)
+                document.getElementById("message").style.display = 'block';
         }
     }
 </script>
