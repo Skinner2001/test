@@ -1,7 +1,7 @@
 @extends ('components.layout')
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row pb-3">
             <div class="col-md-4 text-center">
                 <label>{{$name->name}}</label>
                 <img src="{{$name->image}}" style="width:400px;margin-bottom:4px;border-radius:8px">
